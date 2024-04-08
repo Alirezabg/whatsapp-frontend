@@ -10,12 +10,14 @@ function App() {
   const [activeUserCode, setActiveUserCode] = useState('');
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch('http://whatsapp-poc-api-function.azurewebsites.net/api/users', {
+    fetch('https://whatsapp-poc-api-function.azurewebsites.net/api/users', {
       mode: 'no-cors',
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Network response was not ok, status: ${response.status}`);
+          throw new Error(
+            `Network response was not ok, status: ${response.status}`,
+          );
         }
         return response.json();
       })
