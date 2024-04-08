@@ -126,7 +126,20 @@ function App() {
             <div className="right">
               <div>
                 <h1>Active User</h1>
-                <h2>active user : {activeUserCode}</h2>
+                <h2>
+                  active user{' '}
+                  {users
+                    .filter((user) => user.id == activeUserCode)
+                    .map(
+                      (user) =>
+                        ' ID: ' +
+                        user.id +
+                        '  , Name : ' +
+                        user.display_name +
+                        ' ,  Phone Number : ' +
+                        user.display_phone_number,
+                    )}{' '}
+                </h2>
                 <table>
                   <thead>
                     <tr>
