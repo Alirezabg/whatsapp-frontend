@@ -26,12 +26,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font);
 }
-footer {
-  background-color: var(--first-color);
-  color: var(--title-color);
-  text-align: center;
-  padding: 1rem 0;
-}
+
 
 ul {
   list-style: none;
