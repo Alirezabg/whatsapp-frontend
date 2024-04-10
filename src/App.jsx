@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import UserList from './components/UserList';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import SendMessage from './components/SendMessage';
 export const fetchUsers = async () => {
   try {
     const response = await axios.get(
@@ -49,6 +50,7 @@ function App() {
   const [sortOrder, setSortOrder] = useState('asc');
   const [activeUserCode, setActiveUserCode] = useState('');
   const [users, setUsers] = useState([]);
+  const [activeUser, setActiveUser] = useState({});
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     const fetchUsersData = async () => {
@@ -60,7 +62,7 @@ function App() {
   }, []);
   useEffect(() => {
     const fetchMessagesData = async () => {
-      const response = await fetchMessages(activeUserCode);
+      const response = await fetchMessages(activeUserCode.id);
       const messagesData = response.data;
       setMessages(messagesData);
       console.log('messagesData', messagesData);
@@ -114,9 +116,7 @@ function App() {
                 <h1>Users</h1>
                 <ul>
                   {users.map((user) => (
-                    <li
-                      key={user.id}
-                      onClick={(e) => setActiveUserCode(user.id)}>
+                    <li key={user.id} onClick={(e) => setActiveUserCode(user)}>
                       {user.display_name}
                     </li>
                   ))}
@@ -129,7 +129,7 @@ function App() {
                 <h2>
                   active user{' '}
                   {users
-                    .filter((user) => user.id == activeUserCode)
+                    .filter((user) => user.id == activeUserCode.id)
                     .map(
                       (user) =>
                         ' ID: ' +
@@ -157,7 +157,7 @@ function App() {
                   </thead>
                   <tbody>
                     {messages
-                      .filter((message) => message.user_id === activeUserCode)
+                      .filter((message) => message.user_id === activeUserCode.id)
                       .sort(compareValues(sortBy, sortOrder))
                       .map((message) => (
                         <tr key={message.id}>
@@ -170,6 +170,8 @@ function App() {
                   </tbody>
                 </table>
               </div>
+              <h1>Reply Back</h1>
+              <SendMessage activeUserCode={activeUserCode} />
             </div>
           </div>
         </main>
