@@ -35,7 +35,8 @@ const SendMessage = (props) => {
         console.log('Message sent successfully:', result);
       })
       .catch((error) => {
-        console.error('Error sending message:', error);
+        console.log(respones, result, error);
+        console.error('Error sending message:', error, result, response);
       });
   };
 

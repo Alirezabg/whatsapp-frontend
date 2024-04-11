@@ -101,7 +101,7 @@ function App() {
     };
   };
   return (
-    <>
+    <div>
       <Router>
         <Navbar />
         <main className="main-content">
@@ -157,7 +157,9 @@ function App() {
                   </thead>
                   <tbody>
                     {messages
-                      .filter((message) => message.user_id === activeUserCode.id)
+                      .filter(
+                        (message) => message.user_id === activeUserCode.id,
+                      )
                       .sort(compareValues(sortBy, sortOrder))
                       .map((message) => (
                         <tr key={message.id}>
@@ -179,7 +181,7 @@ function App() {
       <footer className="footer">
         <p>&copy; 2024</p>
       </footer>
-    </>
+    </div>
   );
 }
 
