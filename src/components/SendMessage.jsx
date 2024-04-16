@@ -36,6 +36,7 @@ const SendMessage = (props) => {
       .then((response) => response.json())
       .then((result) => {
         console.log('Message sent successfully:', result);
+        setMessage('');
       })
       .catch((error) => {
         console.error('Error sending message:', error);
