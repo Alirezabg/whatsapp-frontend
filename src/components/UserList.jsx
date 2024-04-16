@@ -169,7 +169,7 @@ function UserList({ users, messages, setMessages }) {
               </button>
             </div>
             <div className="modal-body">
-              <SendMessage activeUserCode={selectedUser?.id} />
+              <SendMessage activeUserCode={selectedUser} />
               <div className="message-list">
                 <table>
                   <tbody>
