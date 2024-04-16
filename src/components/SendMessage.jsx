@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { TbEngine } from 'react-icons/tb';
 
 const SendMessage = (props) => {
   const [message, setMessage] = useState('');
@@ -6,6 +7,7 @@ const SendMessage = (props) => {
   useEffect(() => {
     setMessage('');
   }, [activeUserCode]);
+
   const handleSendMessage = () => {
     const data = {
       messaging_product: 'whatsapp',
@@ -16,6 +18,7 @@ const SendMessage = (props) => {
         preview_url: false,
         body: message,
       },
+      Template: null,
     };
 
     console.log('Sending message:', data);
@@ -35,17 +38,16 @@ const SendMessage = (props) => {
         console.log('Message sent successfully:', result);
       })
       .catch((error) => {
-        console.log(respones, result, error);
-        console.error('Error sending message:', error, result, response);
+        console.error('Error sending message:', error);
       });
   };
 
   return (
     <div>
-      <input
-        type="text"
+      <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        style={{ width: '300px', height: '100px' }} // Adjust width and height as needed
       />
       <button onClick={handleSendMessage}>Send</button>
     </div>
