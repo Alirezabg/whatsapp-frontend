@@ -62,7 +62,7 @@ function App() {
     };
 
     fetchMessagesData();
-  }, [messages.length]);
+  }, [messages.length, activeUserCode]);
 
   return (
     <div>
