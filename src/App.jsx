@@ -45,7 +45,6 @@ export const getUsers = async () => {
 function App() {
   const [activeUserCode, setActiveUserCode] = useState('');
   const [users, setUsers] = useState([]);
-  const [activeUser, setActiveUser] = useState({});
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     const fetchUsersData = async () => {
@@ -63,7 +62,7 @@ function App() {
     };
 
     fetchMessagesData();
-  }, []);
+  }, [messages.length]);
 
   return (
     <div>

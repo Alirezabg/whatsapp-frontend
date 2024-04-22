@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSort,
   faSortUp,
   faSortDown,
 } from '@fortawesome/free-solid-svg-icons';
@@ -169,7 +168,7 @@ function UserList({ users, messages, setMessages }) {
               </button>
             </div>
             <div className="modal-body">
-              <SendMessage activeUserCode={selectedUser} />
+              <SendMessage activeUserCode={selectedUser} messages={messages} setMessages={setMessages}/>
               <div className="message-list">
                 <table>
                   <tbody>

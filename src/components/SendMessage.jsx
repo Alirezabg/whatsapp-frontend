@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { TbEngine } from 'react-icons/tb';
 
-const SendMessage = (props) => {
+const SendMessage = ({ messages, setMessages, activeUserCode }) => {
   const [message, setMessage] = useState('');
-  const { activeUserCode } = props;
+  // const { activeUserCode } = props;
   useEffect(() => {
     setMessage('');
   }, [activeUserCode]);
@@ -37,6 +37,7 @@ const SendMessage = (props) => {
       .then((result) => {
         console.log('Message sent successfully:', result);
         setMessage('');
+        setMessages([...messages, data]);
       })
       .catch((error) => {
         console.error('Error sending message:', error);
